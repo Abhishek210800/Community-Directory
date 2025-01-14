@@ -107,13 +107,15 @@ body {
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 20px;
-  /* position: relative; */
+  position: relative;
 }
 .bxdlftbg:hover {
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
 }
 .bxdlftbg img {
+  max-width: 50px;
+  /* max-height: 50px; */
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(12, 74, 110, 0.5) 0px 4px 6px -1px,
     rgba(12, 74, 110, 0.5) 0px 2px 4px -2px;
