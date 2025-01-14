@@ -9,9 +9,14 @@ function Category() {
     fontWeight: 700,
     fontSize: '19px',
   };
+  const getCategoryCount = (category) => {
+    const filterData = directoryData.directoryCompanies.filter((item) => {
+      return item.services.includes(category);
+    });
+    return filterData.length;
+  };
 
   return (
-    
       <div className="col-md-3 mar">
         <div className="fltrlbox">
           <h4 style={headerStyle}>By category:</h4>
@@ -31,7 +36,7 @@ function Category() {
                 {category.catName}
                 <input type="checkbox" />
                 <span className="checkmk"></span>
-                <strong className="postl">({category.count})</strong>
+                <strong className="postl">({getCategoryCount(category.catName)})</strong>
               </label>
             ))}
           </div>
