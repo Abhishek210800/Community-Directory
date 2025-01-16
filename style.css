@@ -114,14 +114,14 @@ body {
     rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
 }
 .bxdlftbg img {
-  max-width: 65px;
-  max-height: 60px;
+  max-width: 50px;
+  /* max-height: 50px; */
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(12, 74, 110, 0.5) 0px 4px 6px -1px,
     rgba(12, 74, 110, 0.5) 0px 2px 4px -2px;
-  height: 70px;
-  width: 70px;
-  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+  border-radius: 80%;
   margin-right: 15px;
   object-fit: contain;
   float: left;
@@ -179,6 +179,7 @@ body {
 
 .coverbox {
   margin-top: 30px;
+  text-align: left;
 }
 .fltrlbox {
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
@@ -366,6 +367,7 @@ body {
   transform: rotate(45deg);
 }
 .lefttpbtn {
+  text-align: left;
   font-size: 15px;
   text-decoration: none;
   color: rgb(75, 85, 99);
@@ -617,6 +619,7 @@ body {
   margin-bottom: 15px;
 }
 .contbox {
+  font-family: "Nunito Sans", sans-serif;
   padding: 0px 30px 30px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
