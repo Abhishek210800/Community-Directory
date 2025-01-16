@@ -1,7 +1,7 @@
-import React from "react";
-import { useDirectory } from '../ContextApi/DirectoryProvider';
-
-function CompanyList() {
+import React , {useState} from "react";
+import { useDirectory } from "../ContextApi/DirectoryProvider";
+import { Link } from "react-router-dom";
+function CompanyList(props) {
   const { directoryData } = useDirectory();
   function isWithinLastSevenDays(data) {
     const inputDate = new Date(data);
@@ -9,13 +9,25 @@ function CompanyList() {
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(currentDate.getDate() - 7);
     return inputDate >= sevenDaysAgo && inputDate <= currentDate;
-}
+  }
   const containerStyle = {
     backgroundColor: "#fff",
     borderRadius: "10px",
     padding: "10px",
     marginBottom: "20px",
   };
+
+  const [visibleItems, setVisibleItems] = useState(1);
+
+  const loadMore = () => {
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 2);
+  };
+ 
+
+  const ShowCompany=props.company.map(name => {
+    const detail = directoryData.directoryCompanies.find(item => item.name === name);
+    return detail ? detail : null; 
+  });
 
   const spanStyle = {
     color: "rgb(12, 74, 110)",
@@ -67,16 +79,24 @@ function CompanyList() {
       </div>
 
       <div className="row rolefull">
-        {directoryData.directoryCompanies.map((company, index) => (
+
+        { ShowCompany !== null ?
+        ShowCompany.slice(0, visibleItems).map((company, index) => (
           <div className="col-md-6" key={index}>
-            <a href=" ">
+            <Link to='/Panalink'>
               <div className="bxdlftbg">
-                <img src={company.companyLogoURL+company.companyLogo} alt={company.name} />
+                <img
+                  src={company.companyLogoURL + company.companyLogo}
+                  alt={company.name}
+                />
                 <h4>{company.name}</h4>
-                <p>{company.briefDescription 
-  ? (company.briefDescription.length > 30 
-      ? `${company.briefDescription.substring(0, 30)}...` 
-      : company.briefDescription): "Description"}</p>
+                <p>
+                  {company.briefDescription
+                    ? company.briefDescription.length > 30
+                      ? `${company.briefDescription.substring(0, 30)}...`
+                      : company.briefDescription
+                    : "Description"}
+                </p>
                 <ul className="rolnum">
                   {company.services.split(",").map((tag, i) => (
                     <li key={i}>{tag}</li>
@@ -85,7 +105,40 @@ function CompanyList() {
                 <span className="lkeicn">
                   <i className="fa fa-thumbs-o-up"></i> 2
                 </span>
-                {isWithinLastSevenDays(company.created_at.split(' ')[0])? <div className="newpstn">NEW</div>: null}
+                {isWithinLastSevenDays(company.created_at.split(" ")[0]) ? (
+                  <div className="newpstn">NEW</div>
+                ) : null}
+              </div>
+            </Link>
+          </div>
+        ))
+        :directoryData.directoryCompanies.slice(0, visibleItems).map((company, index) => (
+          <div className="col-md-6" key={index}>
+            <a href=" ">
+              <div className="bxdlftbg">
+                <img
+                  src={company.companyLogoURL + company.companyLogo}
+                  alt={company.name}
+                />
+                <h4>{company.name}</h4>
+                <p>
+                  {company.briefDescription
+                    ? company.briefDescription.length > 30
+                      ? `${company.briefDescription.substring(0, 30)}...`
+                      : company.briefDescription
+                    : "Description"}
+                </p>
+                <ul className="rolnum">
+                  {company.services.split(",").map((tag, i) => (
+                    <li key={i}>{tag}</li>
+                  ))}
+                </ul>
+                <span className="lkeicn">
+                  <i className="fa fa-thumbs-o-up"></i> 2
+                </span>
+                {isWithinLastSevenDays(company.created_at.split(" ")[0]) ? (
+                  <div className="newpstn">NEW</div>
+                ) : null}
               </div>
             </a>
           </div>
@@ -93,9 +146,9 @@ function CompanyList() {
       </div>
 
       <div className="text-center marg-10">
-        <a href=" " className="btnstl">
+        <button onClick={loadMore} className="btnstl">
           Load More
-        </a>
+        </button>
       </div>
     </div>
   );
