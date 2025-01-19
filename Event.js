@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 const EventItem = ({ title, description }) => (
   <div className="rwarwhite">
@@ -7,8 +8,12 @@ const EventItem = ({ title, description }) => (
   </div>
 );
 
-const Events = () => {
+const Events = () => {     
   const [activeTab, setActiveTab] = useState("upcoming");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeTab]);
+  
 
   const upcomingEvents = [
     {
