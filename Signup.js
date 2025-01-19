@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect }from 'react';
+
 import '../css/style.css'; 
 import { Link } from 'react-router-dom'
 
 
 
 const App = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       {/* Navbar */}
@@ -31,7 +36,7 @@ const App = () => {
       <div className="continner">
         <div className="row">
           <div className="col-md-12">
-            <Link href="index.html" className="lefttpbtn">
+            <Link to ="/" className="lefttpbtn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="17"
@@ -45,7 +50,7 @@ const App = () => {
               >
                 <path d="m12 19-7-7 7-7"></path>
                 <path d="M19 12H5"></path>
-              </svg>{' '}
+              </svg>{" "}
               Back to Directory
             </Link>
           </div>
