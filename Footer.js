@@ -18,8 +18,8 @@ function Footer() {
 					<ul>
 						<li><Link to="/ebn">Home</Link></li>
 						<li><Link to="/About">About Us</Link></li>
-						<li><Link to="">Events</Link></li>
-						<li><Link to="">Signup</Link></li>
+						<li><Link to="/Event">Events</Link></li>
+						<li><Link to="/Signup">Signup</Link></li>
 					</ul>
 				</div>
 				<div className="col-md-4 ftrone">
